@@ -1,11 +1,4 @@
-import { mergeConfig } from 'next/dist/server/config-shared'
-
-let userConfig = undefined
-try {
-  userConfig = await import('./v0-user-next.config')
-} catch (e) {}
-
-const baseConfig = {
+const nextConfig = {
   output: 'export',
   distDir: 'out',
   eslint: {
@@ -19,9 +12,9 @@ const baseConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
-    parallelServerBuildTraces: true, 
+    parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   }
 }
 
-export default userConfig ? mergeConfig(baseConfig, userConfig) : baseConfig
+export default nextConfig
